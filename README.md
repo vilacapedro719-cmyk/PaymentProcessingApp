@@ -1,6 +1,18 @@
-# Pocket payment API demo
+## PaymentProcessing API
 
-A small FastAPI and SQLite payment demo with a browser interface for account login, registration, balances, transfers, and transfer history.
+A simplified peer-to-peer payments API built with Python, FastAPI, and SQLite, with a minimal web frontend for logging in, sending money, and viewing transaction history. It’s a learning project focused on API design and data integrity rather than a production banking app.
+
+Highlights
+
+Account registration and login, with passwords hashed using salted PBKDF2
+New accounts are seeded with a demo balance, recorded as a ledger entry
+Transfers by account ID or email, executed atomically so debit, credit and ledger entry succeed or fail together
+Concurrency-safe transfers via SQLite write locking (BEGIN IMMEDIATE)
+Idempotency keys so retried requests never move money twice
+Money stored as integer cents to avoid floating-point errors
+Database constraints (non-negative balances, unique emails, foreign keys) as a safety net
+Clear separation between the HTTP layer (main.py) and the data layer (database.py), with domain errors mapped to proper status codes
+Auto-generated interactive docs at /docs
 
 ## Run locally
 
