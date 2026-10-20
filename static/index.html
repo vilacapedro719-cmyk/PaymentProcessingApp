@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pocket — Payments</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar"><a class="brand" href="/">pocket<span>.</span></a><span class="tag">PAYMENTS DEMO</span></header>
+    <section id="auth-view" class="auth-card">
+      <p class="eyebrow">YOUR MONEY, SIMPLIFIED</p>
+      <h1 id="auth-title">Welcome back</h1>
+      <p class="muted" id="auth-description">Sign in to your account to continue.</p>
+      <form id="auth-form">
+        <label>Account name<input id="auth-name" autocomplete="username" required maxlength="80"></label>
+        <label id="email-field" hidden>Email<input id="auth-email" type="email" autocomplete="email" maxlength="254"></label>
+        <label>Password<input id="auth-password" type="password" autocomplete="current-password" minlength="8" required></label>
+        <button id="auth-submit" class="primary">Log in</button>
+      </form>
+      <p class="switch-copy"><span id="switch-prompt">New here?</span> <button id="switch-mode" class="text-button" type="button">Create an account</button></p>
+      <p class="hint">Demo accounts: Vasquinho (vasquinho@example.test) and Filipe (filipe@example.test). Both use password demo1234.</p>
+      <p id="auth-message" class="message" role="status"></p>
+    </section>
+
+    <section id="app-view" hidden>
+      <div class="welcome-row"><div><p class="eyebrow">OVERVIEW</p><h1>Good to see you, <span id="user-name"></span></h1></div><button id="logout" class="quiet">Log out</button></div>
+      <section class="balance-card"><p class="eyebrow">AVAILABLE BALANCE</p><p class="balance" id="balance">—</p><p class="muted">Your Pocket account</p></section>
+      <div class="columns">
+        <section class="panel"><p class="eyebrow">SEND MONEY</p><h2>Make a transfer</h2>
+          <form id="transfer-form">
+            <label>Recipient email<input id="recipient-email" type="email" placeholder="name@example.com" required></label>
+            <label>Amount<input id="amount" type="number" min="0.01" step="0.01" placeholder="0.00" required></label>
+            <button class="primary">Send transfer</button>
+          </form><p id="transfer-message" class="message" role="status"></p>
+        </section>
+        <section class="panel history-panel"><div class="history-heading"><div><p class="eyebrow">ACTIVITY</p><h2>Recent transfers</h2></div><button id="refresh" class="quiet">Refresh</button></div><div id="history" class="history"><p class="muted">Loading activity…</p></div></section>
+      </div>
+      <p class="fine-print">Transfers are simulated. Amounts are stored in cents.</p>
+    </section>
+    <footer>POCKET · A PAYMENT API DEMO</footer>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
